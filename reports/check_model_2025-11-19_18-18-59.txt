@@ -1,0 +1,16 @@
+>>> Model testleri baslatiliyor...
+
+[1] Model Factory testi...
+ Model olusturuldu: linear
+ Model olusturuldu: ridgecv
+ Model olusturuldu: rf
+ Model olusturuldu: gb
+[2] Train & Evaluate testi...
+  R2: 0.1178
+  RMSE: 0.2649
+
+[3] Save & Load testi...
+  Model kaydedildi: models/check_model_test.joblib
+  Yuklenen model isledi, tahmin sayisi: 50
+
+>>> Tum model testleri basariyla tamamlandi! 
