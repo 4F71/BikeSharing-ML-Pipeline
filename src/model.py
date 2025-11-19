@@ -59,5 +59,38 @@ def get_model(name):
         #raise "print(mesaj'dan)"" ya da "Warning(uyarı'dan )"farklı programı durdurmasını sağlayan bir hata mesajıdır
         raise ValueError(f"Desteklenmeyen model adı: {name}")
     
-        
+def train_model(model, X_train ,y_train):
+    """
+       Verilen modeli egitim verisi ile egitir ve egitilmis modeli döndurur.
+    """
+
+    model.fit(X_train,y_train)
+    return model
+
+ 
+def evaluate_model(model, X_test, y_test):
+    """
+    Verilen modeli test verisi uzerinde degerlendirir ve R2 ile RMSE skorlarini dondurur.
+    """
+
+    preds = model.predict(X_test)
+    r2= r2_score(y_test,preds)
+    mse= mean_squared_error(y_test,preds)
+    rmse =mse ** 0.5
+
+    return {"r2": r2, "rmse": rmse}
+
+def save_model(model, name="model.joblib"):
+    """
+    Egitilmis modeli belirtilen isimle models klasorune kaydeder.
+    """
     
+    path= MODEL_DIR/ name
+    joblib.dump(model,path)
+    return path
+
+def load_model(path):
+    """
+    Verilen dosya yolundan modeli yukler ve modeli geri dondurur.
+    """
+    return joblib.load(path)
