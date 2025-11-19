@@ -1,6 +1,9 @@
 """
 model.py icin temel birim testleri.
 Model olusturma, egitim, degerlendirme ve kaydetme/yukleme adimlarini dogrular.
+
+çalıştırma : pytest -q
+
 """
 
 import numpy as np
@@ -37,7 +40,7 @@ def test_train_and_evalute():
     assert isinstance(scores["rmse"], float), "RMSE float olmali!"
 
 
-def test_save_and_load():
+def test_save_and_load(tmp_path):
     #sahte veri oluşturma
     X=np.random.rand(20,3)
     y=np.random.rand(20)
